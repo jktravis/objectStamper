@@ -1,0 +1,1 @@
+const { objectStamper } = require('objectStamper');

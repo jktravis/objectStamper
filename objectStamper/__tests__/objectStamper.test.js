@@ -5,39 +5,6 @@ describe('objectStamper', () => {
     expect(typeof objectStamper).toEqual('function');
   });
 
-  describe('when executed with NO config', () => {
-    it("should return an object with a compose method", () => {
-      expect(typeof objectStamper().compose).toEqual('function');
-    });
-
-    it("should be able to compose a new object based on stamps passed to compose", () => {
-      const myObjectStamp = objectStamper({
-        props: {
-          foo: null
-        },
-        init: function(foo) {
-          this.foo = foo;
-        }
-      });
-      const myOtherObjectStamp = objectStamper({
-        props: {
-          bar: null
-        },
-        init: function(bar) {
-          this.bar = bar;
-        }
-      });
-      const composedStamp = objectStamper()
-        .compose(myObjectStamp)
-        .compose(myOtherObjectStamp);
-
-      // const composedObject = composedStamp();
-
-      expect(composedStamp).toEqual({});
-    });
-  });
-
-
   describe('when executed with a config', () => {
     it("should return a function", () => {
       expect(typeof objectStamper({props: {foo: null}})).toEqual('function');
@@ -76,6 +43,7 @@ describe('objectStamper', () => {
           }
         }
       });
+
 
       expect(myObjectStamp.getFoo).toEqual(myObjectStamp.foo);
     });
